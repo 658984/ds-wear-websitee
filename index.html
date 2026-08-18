@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS WEAR | Luxury Pakistani Menswear | Karachi, Pakistan</title>
+    <meta name="description" content="DS WEAR - Premier Pakistani Men's Fashion Brand. Exclusive Shalwar Kameez, Designer Kurtas, Festive Waistcoats & Prince Coats with Cash on Delivery nationwide.">
+    
+    <!-- Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. CORE STYLES & LUXURY PAKISTANI COLOR SCHEME
+           ========================================================================== */
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #121212;
+            --card-bg: #181818;
+            --accent: #c9a050;
+            --accent-hover: #e0b666;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --font-main: 'Montserrat', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-main); background-color: var(--primary); color: var(--text-light); overflow-x: hidden; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; object-fit: cover; }
+        button { cursor: pointer; border: none; outline: none; background: none; font-family: var(--font-main); transition: var(--transition); }
+
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 3.5rem; }
+        .section-title h2 { font-family: var(--font-serif); font-size: 2.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .section-title p { color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; }
+
+        .btn { display: inline-block; padding: 0.9rem 2.2rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--accent); transition: var(--transition); text-align: center; }
+        .btn-primary { background: var(--accent); color: var(--primary); }
+        .btn-primary:hover { background: transparent; color: var(--accent); }
+        .btn-outline { background: transparent; color: var(--text-light); border-color: var(--text-light); }
+        .btn-outline:hover { background: var(--text-light); color: var(--primary); }
+
+        .badge-sale { position: absolute; top: 15px; left: 15px; background: #d9534f; color: #fff; padding: 4px 10px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
+        .badge-tag { position: absolute; top: 15px; right: 15px; background: var(--accent); color: var(--primary); padding: 4px 10px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
+
+        /* Delivery Top Banner */
+        .top-delivery-bar { background: var(--accent); color: var(--primary); font-size: 0.8rem; font-weight: 700; text-align: center; padding: 0.4rem 0; letter-spacing: 1px; }
+
+        /* Preloader */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--primary); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.8s ease, visibility 0.8s ease; }
+        .loader-logo { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 800; letter-spacing: 8px; color: var(--text-light); margin-bottom: 1rem; opacity: 0; animation: fadeIn 1.5s forwards 0.3s; }
+        .loader-logo span { color: var(--accent); display: block; font-size: 0.9rem; font-family: var(--font-main); letter-spacing: 10px; text-align: center; }
+        .loader-bar { width: 150px; height: 2px; background: rgba(255, 255, 255, 0.1); position: relative; overflow: hidden; }
+        .loader-bar::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--accent); animation: loading 2s infinite ease-in-out; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes loading { 0% { left: -100%; } 50% { left: 0%; } 100% { left: 100%; } }
+
+        /* Header Navigation */
+        header { position: fixed; top: 31px; left: 0; width: 100%; z-index: 1000; transition: var(--transition); background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); }
+        header.scrolled { top: 0; padding: 0.2rem 0; background: rgba(10, 10, 10, 0.95); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+        .brand-logo { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 800; letter-spacing: 4px; color: var(--text-light); display: flex; flex-direction: column; line-height: 1; }
+        .brand-logo span { color: var(--accent); font-size: 0.65rem; font-family: var(--font-main); letter-spacing: 5px; font-weight: 500; margin-top: 3px; }
+        .nav-menu { display: flex; gap: 2rem; }
+        .nav-link { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: var(--text-light); position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--accent); transition: var(--transition); }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-icons { display: flex; align-items: center; gap: 1.2rem; }
+        .icon-btn { color: var(--text-light); font-size: 1.1rem; position: relative; }
+        .icon-btn:hover { color: var(--accent); }
+        .badge { position: absolute; top: -8px; right: -10px; background: var(--accent); color: var(--primary); font-size: 0.65rem; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .hamburger { display: none; font-size: 1.4rem; color: var(--text-light); }
+
+        /* Hero Section */
+        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,0.85)), url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding-top: 80px; }
+        .hero-content { max-width: 900px; padding: 0 20px; }
+        .hero-subtitle { font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: block; font-weight: 600; }
+        .hero-title { font-family: var(--font-serif); font-size: 4.2rem; font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: 2px; }
+        .hero-description { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 680px; margin-left: auto; margin-right: auto; font-weight: 300; }
+        .hero-btns { display: flex; gap: 1.5rem; justify-content: center; }
+
+        /* Pakistani Categories Grid */
+        .categories { padding: 7rem 0 3rem; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.8rem; }
+        .category-card { position: relative; height: 420px; overflow: hidden; border: 1px solid var(--border-color); }
+        .category-card img { width: 100%; height: 100%; transition: transform 0.8s ease; }
+        .category-card:hover img { transform: scale(1.08); }
+        .category-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.95), transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
+        .category-overlay h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 0.3rem; }
+        .category-overlay p { color: var(--accent); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem; }
+
+        /* Products & Filters */
+        .products { padding: 4rem 0 7rem; }
+        .filter-buttons { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .filter-btn { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; padding: 0.6rem 1.2rem; border: 1px solid transparent; transition: var(--transition); }
+        .filter-btn.active, .filter-btn:hover { color: var(--accent); border-color: var(--accent); }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2.2rem; }
+        .product-card { background: var(--card-bg); border: 1px solid var(--border-color); transition: var(--transition); position: relative; }
+        .product-card:hover { transform: translateY(-8px); border-color: rgba(201, 160, 80, 0.4); }
+        .product-image { position: relative; height: 380px; overflow: hidden; }
+        .product-image img { width: 100%; height: 100%; transition: transform 0.6s ease; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .product-actions { position: absolute; top: 15px; right: 15px; display: flex; flex-direction: column; gap: 8px; opacity: 0; transform: translateX(20px); transition: var(--transition); z-index: 3; }
+        .product-card:hover .product-actions { opacity: 1; transform: translateX(0); }
+        .action-btn { width: 38px; height: 38px; background: rgba(10, 10, 10, 0.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-light); transition: var(--transition); font-size: 0.9rem; }
+        .action-btn:hover { background: var(--accent); color: var(--primary); }
+        .product-info { padding: 1.4rem; text-align: center; }
+        .product-category { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .product-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; height: 48px; overflow: hidden; }
+        .product-price { font-size: 1.05rem; color: var(--accent); font-weight: 700; display: flex; justify-content: center; gap: 10px; align-items: center; }
+        .product-price .old-price { color: var(--text-muted); text-decoration: line-through; font-size: 0.85rem; font-weight: 400; }
+        .add-to-cart-btn { width: 100%; padding: 0.8rem; margin-top: 1rem; background: transparent; border: 1px solid var(--border-color); color: var(--text-light); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+        .product-card:hover .add-to-cart-btn { background: var(--accent); color: var(--primary); border-color: var(--accent); }
+
+        /* Complete the Look Section */
+        .complete-look { padding: 6rem 0; background: var(--secondary); border-top: 1px solid var(--border-color); }
+        .look-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .look-image { position: relative; height: 500px; border: 1px solid var(--border-color); }
+        .look-items { display: flex; flex-direction: column; gap: 1.5rem; }
+        .look-item-card { display: flex; gap: 1.5rem; background: var(--card-bg); padding: 1rem; border: 1px solid var(--border-color); align-items: center; }
+        .look-item-card img { width: 80px; height: 90px; object-fit: cover; }
+
+        /* Lookbook */
+        .lookbook { padding: 6rem 0; }
+        .lookbook-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 250px; gap: 1.2rem; }
+        .lookbook-item { position: relative; overflow: hidden; cursor: pointer; }
+        .lookbook-item.large { grid-column: span 2; grid-row: span 2; }
+        .lookbook-item.tall { grid-row: span 2; }
+        .lookbook-item img { width: 100%; height: 100%; transition: transform 0.8s ease; }
+        .lookbook-item:hover img { transform: scale(1.08); }
+        .lookbook-content { position: absolute; inset: 0; background: rgba(10,10,10,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: var(--transition); }
+        .lookbook-item:hover .lookbook-content { opacity: 1; }
+        .lookbook-content span { border: 1px solid var(--accent); padding: 0.8rem 1.5rem; color: var(--text-light); letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; }
+
+        /* Nationwide Delivery & Payments Highlights */
+        .pak-features { padding: 5rem 0; background: #080808; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .pak-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; text-align: center; }
+        .pak-box { padding: 1.5rem; background: var(--card-bg); border: 1px solid var(--border-color); }
+        .pak-box i { font-size: 2.2rem; color: var(--accent); margin-bottom: 1rem; }
+        .pak-box h4 { font-size: 1rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .pak-box p { color: var(--text-muted); font-size: 0.85rem; }
+
+        /* Size Guide Modal */
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 3000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: var(--transition); padding: 20px; }
+        .modal.active { opacity: 1; pointer-events: auto; }
+        .modal-content { background: var(--secondary); border: 1px solid var(--accent); width: 100%; max-width: 650px; padding: 2.5rem; position: relative; max-height: 90vh; overflow-y: auto; }
+        .modal-close { position: absolute; top: 20px; right: 20px; color: var(--text-light); font-size: 1.5rem; }
+        .size-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+        .size-table th, .size-table td { border: 1px solid var(--border-color); padding: 10px; text-align: center; font-size: 0.85rem; }
+        .size-table th { background: var(--card-bg); color: var(--accent); }
+
+        /* Checkout & Cart Drawer */
+        .cart-drawer { position: fixed; top: 0; right: -420px; width: 100%; max-width: 420px; height: 100vh; background: var(--secondary); z-index: 2000; box-shadow: -10px 0 30px rgba(0,0,0,0.8); transition: var(--transition); display: flex; flex-direction: column; }
+        .cart-drawer.open { right: 0; }
+        .cart-header { padding: 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+        .cart-body { flex: 1; padding: 1.5rem; overflow-y: auto; }
+        .cart-footer { padding: 1.5rem; border-top: 1px solid var(--border-color); }
+        .cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+
+        .checkout-section { padding: 6rem 0; display: none; }
+        .checkout-section.active { display: block; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; color: var(--text-muted); }
+        .form-control { width: 100%; padding: 0.8rem; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-light); outline: none; }
+        .form-control:focus { border-color: var(--accent); }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.5); transition: var(--transition); }
+        .whatsapp-btn:hover { transform: scale(1.1); }
+
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1500; opacity: 0; pointer-events: none; transition: var(--transition); }
+        .overlay.active { opacity: 1; pointer-events: auto; }
+
+        /* Footer */
+        footer { background: #040404; padding: 5rem 0 2rem; border-top: 1px solid var(--border-color); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3.5rem; margin-bottom: 4rem; }
+        .footer-brand p { color: var(--text-muted); margin-top: 1rem; font-size: 0.85rem; }
+        .footer-title { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem; color: var(--accent); }
+        .footer-links li { margin-bottom: 0.7rem; }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: var(--accent); }
+        .social-icons { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
+        .social-icon { width: 38px; height: 38px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 0.9rem; }
+        .social-icon:hover { background: var(--accent); color: var(--primary); border-color: var(--accent); }
+        .copyright { text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.8rem; }
+
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3.2rem; }
+            .look-grid, .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .lookbook-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            header { top: 0; }
+            .top-delivery-bar { font-size: 0.7rem; }
+            .hamburger { display: block; }
+            .nav-menu { position: fixed; top: 0; left: -100%; width: 80%; height: 100vh; background: var(--primary); flex-direction: column; padding: 6rem 2rem; transition: var(--transition); border-right: 1px solid var(--border-color); }
+            .nav-menu.open { left: 0; }
+            .hero-title { font-size: 2.4rem; }
+            .hero-btns { flex-direction: column; }
+            .lookbook-grid { grid-template-columns: 1fr; }
+            .lookbook-item.large, .lookbook-item.tall { grid-column: span 1; grid-row: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NATIONWIDE DELIVERY BAR -->
+    <div class="top-delivery-bar">
+        <i class="fa-solid fa-truck-fast"></i> NATIONWIDE DELIVERY ACROSS PAKISTAN | 2-3 WORKING DAYS | FREE SHIPPING OVER PKR 5,000
+    </div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader-logo">
+            DS WEAR
+            <span>PAKISTAN</span>
+        </div>
+        <div class="loader-bar"></div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- HEADER NAVIGATION -->
+    <header id="header">
+        <div class="container nav-container">
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <a href="#" class="brand-logo">
+                DS WEAR
+                <span>KARACHI • EST. 2026</span>
+            </a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#categories" class="nav-link">Categories</a></li>
+                <li><a href="#products" class="nav-link">Pakistani Catalog</a></li>
+                <li><a href="#lookbook" class="nav-link">Lookbook</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="javascript:void(0)" onclick="openModal('size-modal')" class="nav-link">Size Guide</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <button class="icon-btn" id="cart-btn" aria-label="Cart Drawer">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SHOPPING CART DRAWER -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>YOUR SHOPPING BAG</h3>
+            <button class="icon-btn" id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cart-items">
+            <p style="text-align: center; color: var(--text-muted); margin-top: 2rem;">Your cart is currently empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total Amount:</span>
+                <span id="cart-total-price">PKR 0</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="openCheckout()">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-subtitle">PAKISTANI MEN'S LUXURY COLLECTION '26</span>
+            <h1 class="hero-title">ELEGANCE IN EVERY THREAD</h1>
+            <p class="hero-description">Discover premium Shalwar Kameez, Embroidered Kurtas, Festive Waistcoats, and Prince Coats crafted for the modern Pakistani gentleman.</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn btn-primary">SHOP PAKISTANI WEAR</a>
+                <a href="#categories" class="btn btn-outline">EXPLORE CATEGORIES</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PAKISTANI CATEGORIES -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <p>ROYAL COLLECTIONS</p>
+                <h2>FEATURED TRADITIONAL WEAR</h2>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="image.png" alt="Shalwar Kameez">
+                    <div class="category-overlay">
+                        <h3>Shalwar Kameez</h3>
+                        <p>Egyptian Cotton & Soft Linen</p>
+                        <a href="#products" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Shop Category</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="image copy.png" alt="Embroidered Kurtas">
+                    <div class="category-overlay">
+                        <h3>Embroidered Kurtas</h3>
+                        <p>Threadwork & Dabka Necklines</p>
+                        <a href="#products" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Shop Category</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="image copy 2.png" alt="Waistcoats">
+                    <div class="category-overlay">
+                        <h3>Jamawar Waistcoats</h3>
+                        <p>Formal & Festive Weddings</p>
+                        <a href="#products" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Shop Category</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="image copy 3.png" alt="Prince Coats">
+                    <div class="category-overlay">
+                        <h3>Prince Coats & Suiting</h3>
+                        <p>Groom & Formal Attire</p>
+                        <a href="#products" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Shop Category</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NATIONWIDE DELIVERY & PAYMENT HIGHLIGHTS -->
+    <section class="pak-features">
+        <div class="container">
+            <div class="pak-grid">
+                <div class="pak-box">
+                    <i class="fa-solid fa-truck-ramp-box"></i>
+                    <h4>NATIONWIDE DELIVERY</h4>
+                    <p>Karachi base. Online delivery across all cities in 2–3 working days.</p>
+                </div>
+                <div class="pak-box">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    <h4>CASH ON DELIVERY</h4>
+                    <p>Pay safely at your doorstep anywhere in Pakistan.</p>
+                </div>
+                <div class="pak-box">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <h4>EASYPAISA / JAZZCASH / BANK</h4>
+                    <p>Instant online transfers & account verification.</p>
+                </div>
+                <div class="pak-box">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <h4>WHATSAPP SUPPORT</h4>
+                    <p>Instant order confirmation via 03222946428.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS CATALOG -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <p>EXPANDED PAKISTANI CATALOG</p>
+                <h2>DS WEAR EXCLUSIVE TRADITIONAL DRESSES</h2>
+            </div>
+
+            <!-- <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">ALL ITEMS</button>
+                <button class="filter-btn" data-filter="shalwar-kameez">SHALWAR KAMEEZ</button>
+                <button class="filter-btn" data-filter="kurtas">KURTAS & PAJAMA</button>
+                <button class="filter-btn" data-filter="waistcoats">WAISTCOATS</button>
+                <button class="filter-btn" data-filter="prince-coats">PRINCE COATS & FORMALS</button>
+            </div> -->
+
+            <div class="product-grid" id="product-grid">
+                <!-- Loaded dynamically via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPLETE THE LOOK -->
+    <section class="complete-look">
+        <div class="container">
+            <div class="section-title">
+                <p>STYLED COMBINATIONS</p>
+                <h2>COMPLETE THE PAKISTANI EID LOOK</h2>
+            </div>
+            <div class="look-grid">
+                <div class="look-image">
+                    <img src="QFT-KT-SF24-29-BLK_2_540x.webp" style="width: 100%; height: 100%; object-fit: cover;" alt="Pakistani Traditional Look">
+                </div>
+                <div class="look-items">
+                    <h3 style="font-family: var(--font-serif); font-size: 2rem;">Royal Festive Eid Combination</h3>
+                    <p style="color: var(--text-muted);">Pair our signature hand-embroidered kurta with a luxury Raw Silk waistcoat for the ultimate festive aesthetic.</p>
+
+                    <div class="look-item-card">
+                        <img src="image copy 4.png" alt="Product">
+                        <div>
+                            <h4>Royal Black Embroidered Kurta</h4>
+                            <p style="color: var(--accent); font-weight: 700;">PKR 5,499</p>
+                        </div>
+                    </div>
+
+                    <div class="look-item-card">
+                        <img src="image copy 5.png" alt="Product">
+                        <div>
+                            <h4>Gold Velvet Jamawar Waistcoat</h4>
+                            <p style="color: var(--accent); font-weight: 700;">PKR 7,999</p>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="addToCart(1); addToCart(8);">ADD ENTIRE SUIT TO BAG</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDITORIAL LOOKBOOK -->
+    <section class="lookbook" id="lookbook">
+        <div class="container">
+            <div class="section-title">
+                <p>EDITORIAL CAMPAIGN '26</p>
+                <h2>PAKISTANI MENSWEAR LOOKBOOK</h2>
+            </div>
+
+            <div class="lookbook-grid">
+                <div class="lookbook-item large">
+                    <img src="image copy 6.png" alt="Look 1">
+                    <div class="lookbook-content"><span>ROYAL WEDDINGS '26</span></div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="image copy 7.png" alt="Look 2">
+                    <div class="lookbook-content"><span>EID & FESTIVE</span></div>
+                </div>
+                <div class="lookbook-item tall">
+                    <img src="image copy 8.png" alt="Look 3">
+                    <div class="lookbook-content"><span>GROOM WEAR</span></div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="image copy 9.png" alt="Look 4">
+                    <div class="lookbook-content"><span>SUMMER COTTONS</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHECKOUT SECTION -->
+    <section class="checkout-section container" id="checkout-section">
+        <div class="section-title">
+            <p>ORDER CONFIRMATION</p>
+            <h2>PAKISTAN CHECKOUT</h2>
+        </div>
+        <form style="max-width: 800px; margin: 0 auto; background: var(--secondary); padding: 2.5rem; border: 1px solid var(--border-color);" onsubmit="event.preventDefault(); placeOrder();">
+            <h3 style="color: var(--accent); margin-bottom: 1.5rem;">1. Shipping & Contact Information</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" class="form-control" required placeholder="e.g. Muhammad Ali">
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp Mobile Number *</label>
+                    <input type="text" class="form-control" required placeholder="03XXXXXXXXX">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Complete House / Office Address *</label>
+                <input type="text" class="form-control" required placeholder="House No, Street, Area / Sector">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label>City *</label>
+                    <input type="text" class="form-control" required placeholder="Karachi, Lahore, Islamabad, etc.">
+                </div>
+                <div class="form-group">
+                    <label>Province *</label>
+                    <input type="text" class="form-control" required placeholder="Sindh, Punjab, KPK, etc.">
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 1.5rem;">2. Payment Method</h3>
+            <div class="form-group">
+                <label><input type="radio" name="payment" value="COD" checked> Cash on Delivery (Nationwide - Free Delivery Over PKR 5,000)</label>
+            </div>
+            <div class="form-group">
+                <label><input type="radio" name="payment" value="EasyPaisa"> EasyPaisa (03222946428)</label>
+            </div>
+            <div class="form-group">
+                <label><input type="radio" name="payment" value="JazzCash"> JazzCash (03222946428)</label>
+            </div>
+            <div class="form-group">
+                <label><input type="radio" name="payment" value="Bank"> Bank Transfer (Meezan Bank - Title: DS WEAR - IBAN: PKXX MEZN XXXX XXXX)</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">PLACE ORDER VIA WHATSAPP</button>
+        </form>
+    </section>
+
+    <!-- SIZE GUIDE MODAL -->
+    <div class="modal" id="size-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('size-modal')">&times;</button>
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent);">DS WEAR PAKISTANI SIZE CHART</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Standard fitting guide for Kurtas, Shalwar Kameez, and Waistcoats (in inches).</p>
+            <table class="size-table">
+                <thead>
+                    <tr>
+                        <th>Size</th>
+                        <th>Chest</th>
+                        <th>Shoulder</th>
+                        <th>Kameez / Kurta Length</th>
+                        <th>Shalwar Waist</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Small (S)</td><td>38"</td><td>17.5"</td><td>40"</td><td>30-32"</td></tr>
+                    <tr><td>Medium (M)</td><td>40"</td><td>18.0"</td><td>42"</td><td>32-34"</td></tr>
+                    <tr><td>Large (L)</td><td>43"</td><td>19.0"</td><td>44"</td><td>34-36"</td></tr>
+                    <tr><td>XL</td><td>46"</td><td>20.0"</td><td>45"</td><td>36-38"</td></tr>
+                    <tr><td>XXL</td><td>49"</td><td>21.0"</td><td>46"</td><td>38-40"</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about" style="padding: 6rem 0; background: var(--secondary);">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div>
+                <p style="color: var(--accent); letter-spacing: 3px; font-weight: 600; font-size: 0.8rem;">KARACHI ORIGIN</p>
+                <h2 style="font-family: var(--font-serif); font-size: 2.8rem; margin: 0.5rem 0 1.5rem;">ABOUT DS WEAR</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">DS WEAR is a modern Pakistani fashion brand headquartered in Karachi. We bring together classical Eastern aesthetics, premium cottons, and precise hand embroidery to craft superior traditional menswear.</p>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">We serve customers across all major cities of Pakistan through online delivery within 2–3 working days with full Cash on Delivery support.</p>
+            </div>
+            <div>
+                <img src="image copy 10.png" alt="Brand Store">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="brand-logo">DS WEAR</a>
+                    <p>Premium Pakistani Men's Traditional Attire. Karachi, Pakistan.<br>Nationwide Doorstep Delivery in 2–3 Working Days.</p>
+                    <p style="margin-top: 0.8rem; color: var(--accent);"><i class="fa-brands fa-whatsapp"></i> Support: 03222946428</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">PAKISTANI COLLECTIONS</h4>
+                    <ul class="footer-links">
+                        <li><a href="#products">The Sovereign Black Tailored Suit</a></li>
+                        <li><a href="#products">Obsidian Onyx Executive Suit</a></li>
+                        <li><a href="#products">Metropolitan Casual Bomber Suit</a></li>
+                        <li><a href="#products">Urban Edge Bomber Jacket Ensemble</a></li>
+                        <li><a href="#products">Linen Casual Suits</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">HELP & POLICIES</h4>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)" onclick="openModal('size-modal')">Size Chart & Fitting</a></li>
+                        <li><a href="#">Delivery Policy (2-3 Days)</a></li>
+                        <li><a href="#">Return & Exchange Policy</a></li>
+                        <li><a href="#">Cash on Delivery Guide</a></li>
+                        <li><a href="#">Payment Instructions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">PAYMENT METHODS</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">Accepted Gateways:</p>
+                    <ul class="footer-links" style="color: var(--text-muted); font-size: 0.85rem;">
+                        <li>• Cash on Delivery (Pakistan)</li>
+                        <li>• EasyPaisa Account</li>
+                        <li>• JazzCash Account</li>
+                        <li>• Meezan Bank / HBL / UBL</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 DS WEAR Pakistan. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/923222946428?text=Hello%20DS%20WEAR,%20I%20am%20interested%20in%20buying%20Pakistani%20traditional%20dresses." target="_blank" class="whatsapp-btn" aria-label="WhatsApp Support">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- JAVASCRIPT LOGIC WITH EXPANDED PAKISTANI DRESSES DATA -->
+    <script>
+        // EXPANDED PAKISTANI DRESSES CATALOG (REAL PKR PRICING & CATEGORIES)
+        const products = [
+            { id: 1, name: "The Sovereign Black Tailored Suit", category: "kurtas", price: 5499, oldPrice: 6999, tag: "Eid Festive", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, name: "Obsidian Onyx Executive Suit", category: "shalwar-kameez", price: 6999, oldPrice: 8500, tag: "Best Seller", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, name: "Metropolitan Casual Bomber Suit", category: "kurtas", price: 5999, oldPrice: 7200, tag: "Trending", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" },
+            { id: 4, name: "Urban Edge Bomber Jacket Ensemble", category: "shalwar-kameez", price: 7499, oldPrice: 8999, tag: "Premium", image: "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=600&q=80" },
+            { id: 5, name: "Executive Oxford Button-Down Collection", category: "kurtas", price: 3999, oldPrice: 4800, tag: "Summer Wear", image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80" },
+            { id: 6, name: "Elysian Minimalist Black Atelier Top", category: "kurtas", price: 6299, oldPrice: 7500, tag: "Wedding Wear", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" },
+            { id: 7, name: "Monarch Executive Charcoal Suit", category: "shalwar-kameez", price: 5999, oldPrice: 6999, tag: "Jumma Special", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" },
+            { id: 8, name: "Urban Edge Floral Printed Denim Layer", category: "waistcoats", price: 7999, oldPrice: 9500, tag: "Royal Groom", image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=600&q=80" },
+            { id: 9, name: "Vintage Tan Leather Biker Jacket", category: "waistcoats", price: 5999, oldPrice: 6999, tag: "Popular", image: "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=600&q=80" },
+            { id: 10, name: "Executive Casual Flatlay Essentials", category: "prince-coats", price: 14999, oldPrice: 18000, tag: "Luxury Groom", image: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" },
+            { id: 11, name: "Vanguard Midnight Stripe Business Suit", category: "shalwar-kameez", price: 4899, oldPrice: 5800, tag: "New Arrival", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" },
+            { id: 12, name: "Metropolitan Light Washed Denim Jacket", category: "waistcoats", price: 6999, oldPrice: 8500, tag: "Winter Festive", image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        let cart = [];
+
+        // DOM ELEMENTS
+        const productGrid = document.getElementById('product-grid');
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartBtn = document.getElementById('cart-btn');
+        const closeCart = document.getElementById('close-cart');
+        const overlay = document.getElementById('overlay');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const cartCountBadge = document.getElementById('cart-count');
+
+        // PRELOADER
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 800);
+        });
+
+        // RENDER PRODUCTS
+        function renderProducts(filter = 'all') {
+            productGrid.innerHTML = '';
+            const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.classList.add('product-card');
+                card.innerHTML = `
+                    ${product.oldPrice ? `<span class="badge-sale">SALE</span>` : ''}
+                    <span class="badge-tag">${product.tag}</span>
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="product-actions">
+                            <button class="action-btn" onclick="addToCart(${product.id})"><i class="fa-solid fa-bag-shopping"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category.replace('-', ' ').toUpperCase()}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">
+                            PKR ${product.price.toLocaleString()}
+                            ${product.oldPrice ? `<span class="old-price">PKR ${product.oldPrice.toLocaleString()}</span>` : ''}
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">ADD TO BAG</button>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        // FILTER BUTTONS
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderProducts(e.target.dataset.filter);
+            });
+        });
+
+        // CART LOGIC
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const item = cart.find(i => i.id === id);
+            if (item) { item.quantity += 1; }
+            else { cart.push({ ...product, quantity: 1 }); }
+            updateCart();
+            openCart();
+        }
+
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let count = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: var(--text-muted); margin-top: 2rem;">Your cart is currently empty.</p>';
+            } else {
+                cart.forEach(item => {
+                    total += item.price * item.quantity;
+                    count += item.quantity;
+                    const el = document.createElement('div');
+                    el.style.display = 'flex';
+                    el.style.gap = '15px';
+                    el.style.marginBottom = '1.2rem';
+                    el.style.alignItems = 'center';
+                    el.innerHTML = `
+                        <img src="${item.image}" style="width: 65px; height: 75px; object-fit: cover;">
+                        <div style="flex: 1;">
+                            <h4 style="font-size: 0.85rem;">${item.name}</h4>
+                            <p style="color: var(--accent); font-weight: 700;">PKR ${item.price.toLocaleString()} x ${item.quantity}</p>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(el);
+                });
+            }
+
+            cartTotalPrice.textContent = `PKR ${total.toLocaleString()}`;
+            cartCountBadge.textContent = count;
+        }
+
+        function openCart() { cartDrawer.classList.add('open'); overlay.classList.add('active'); }
+        function closeCartDrawer() { cartDrawer.classList.remove('open'); overlay.classList.remove('active'); }
+
+        cartBtn.addEventListener('click', openCart);
+        closeCart.addEventListener('click', closeCartDrawer);
+        overlay.addEventListener('click', () => { closeCartDrawer(); closeModal('size-modal'); });
+
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+        function openCheckout() {
+            closeCartDrawer();
+            document.getElementById('checkout-section').classList.add('active');
+            window.location.href = "#checkout-section";
+        }
+
+        function placeOrder() {
+            let msg = "Hello DS WEAR, I want to confirm my Pakistani traditional order:\n\n";
+            cart.forEach(i => { msg += `- ${i.name} (x${i.quantity}): PKR ${i.price * i.quantity}\n`; });
+            msg += `\nTotal: ${cartTotalPrice.textContent}\nDelivery: 2-3 Days Nationwide (Pakistan)`;
+            window.open(`https://wa.me/923222946428?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        document.getElementById('hamburger-btn').addEventListener('click', () => {
+            document.getElementById('nav-menu').classList.toggle('open');
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 40) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        renderProducts();
+    </script>
+</body>
+</html>
